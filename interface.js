@@ -1,9 +1,4 @@
-// do we need to do something to link src/thermostat.js with this file?
-// And do we need to link index.html to this?
-
-
-
-$(document).ready(function() { 
+$(document).ready(function() {
 
   var thermostat = new Thermostat();
 
@@ -25,23 +20,22 @@ $(document).ready(function() {
     updateTemperature();
   });
 
-  $('#powerSave').click(function() {
+  $('#powerSaveOn').click(function() {
     thermostat.powerSavingSwitch();
+    $("#powerSave").text('Power save on')
+    updateTemperature();
   });
 
+  $('#powerSaveOff').click(function() {
+    thermostat.powerSavingSwitch();
+    $("#powerSave").text('Power save off')
+    updateTemperature();
+  });
 
 
   function updateTemperature() {
     $('#temp').text(thermostat.temperature);
+    $('#temp').attr('class', thermostat.energyUsage());
   };
-
-
-
-
-
-
-
-
-
 
 });
